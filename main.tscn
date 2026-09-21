@@ -1,0 +1,170 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://src/main.gd" id="1_main"]
+[ext_resource type="Script" path="res://src/radial_sector_explosion.gd" id="2_solver"]
+
+[node name="RadialSectorExplosionDemo" type="Node2D"]
+script = ExtResource("1_main")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.055, 0.047, 0.04, 1)
+mouse_filter = 2
+
+[node name="ExplosionSolver" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_solver")
+
+[node name="CenterHint" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 250.0
+offset_top = 12.0
+offset_right = 1030.0
+offset_bottom = 42.0
+text = "目标排序式径向扇区爆炸测试区"
+horizontal_alignment = 1
+mouse_filter = 2
+
+[node name="LeftPanel" type="PanelContainer" parent="."]
+offset_right = 230.0
+offset_bottom = 720.0
+
+[node name="LeftVBox" type="VBoxContainer" parent="LeftPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="LeftTitle" type="Label" parent="LeftPanel/LeftVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "爆炸参数"
+
+[node name="LanguageLabel" type="Label" parent="LeftPanel/LeftVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "语言"
+
+[node name="LanguageOption" type="OptionButton" parent="LeftPanel/LeftVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+item_count = 2
+selected = 0
+popup/item_0/text = "简体中文"
+popup/item_0/id = 0
+popup/item_1/text = "English"
+popup/item_1/id = 1
+
+[node name="RadiusLabel" type="Label" parent="LeftPanel/LeftVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "爆炸半径"
+
+[node name="RadiusInput" type="SpinBox" parent="LeftPanel/LeftVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 32.0
+max_value = 600.0
+value = 220.0
+
+[node name="DamageLabel" type="Label" parent="LeftPanel/LeftVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "每扇区爆炸伤害"
+
+[node name="DamageInput" type="SpinBox" parent="LeftPanel/LeftVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 2000.0
+value = 100.0
+
+[node name="SectorLabel" type="Label" parent="LeftPanel/LeftVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "扇区数量 / 密度"
+
+[node name="SectorInput" type="SpinBox" parent="LeftPanel/LeftVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 128.0
+value = 16.0
+
+[node name="ExplosionModeButton" type="Button" parent="LeftPanel/LeftVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "切换到引爆模式"
+
+[node name="ClearButton" type="Button" parent="LeftPanel/LeftVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "清空目标"
+
+[node name="ModeLabel" type="Label" parent="LeftPanel/LeftVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+autowrap_mode = 2
+
+[node name="ResultLabel" type="Label" parent="LeftPanel/LeftVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+autowrap_mode = 2
+text = "先从右侧选择形状并放置。"
+
+[node name="RightPanel" type="PanelContainer" parent="."]
+offset_left = 1050.0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="RightVBox" type="VBoxContainer" parent="RightPanel"]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="RightTitle" type="Label" parent="RightPanel/RightVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "目标形状"
+
+[node name="HealthLabel" type="Label" parent="RightPanel/RightVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "目标生命值"
+
+[node name="HealthInput" type="SpinBox" parent="RightPanel/RightVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 5000.0
+value = 300.0
+
+[node name="RectangleButton" type="Button" parent="RightPanel/RightVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "矩形"
+
+[node name="WideRectangleButton" type="Button" parent="RightPanel/RightVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "宽矩形"
+
+[node name="CircleButton" type="Button" parent="RightPanel/RightVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "圆形"
+
+[node name="TriangleButton" type="Button" parent="RightPanel/RightVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "三角形"
+
+[node name="IrregularButton" type="Button" parent="RightPanel/RightVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "不规则 / 多碰撞形状"
+
+[node name="Help" type="Label" parent="RightPanel/RightVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+autowrap_mode = 2
+text = "选择形状后在中间点击放置。切换到引爆模式后，左键产生爆炸。红线表示被实体阻挡的扇区。"
+
